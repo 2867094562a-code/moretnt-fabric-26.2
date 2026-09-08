@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "moretnt:item/glowstone_light_arrow"
+  }
+}

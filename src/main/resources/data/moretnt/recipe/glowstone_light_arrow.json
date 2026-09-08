@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "combat",
+  "ingredients": [
+    "moretnt:glow_tnt",
+    "minecraft:arrow"
+  ],
+  "result": {
+    "id": "moretnt:glowstone_light_arrow",
+    "count": 10
+  }
+}

@@ -10,5 +10,6 @@ public final class MoreTntClient implements ClientModInitializer {
 	@Override
 	public void onInitializeClient() {
 		EntityRendererRegistry.register(MoreTntMod.PRIMED_TNT, TntRenderer::new);
+		EntityRendererRegistry.register(MoreTntMod.GLOWSTONE_LIGHT_ARROW_ENTITY, GlowstoneArrowRenderer::new);
 	}
 }

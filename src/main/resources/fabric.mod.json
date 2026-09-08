@@ -3,7 +3,7 @@
   "id": "moretnt",
   "version": "${version}",
   "name": "更多 TNT",
-  "description": "加入 30 种具有明确用途的工程 TNT。",
+  "description": "加入 32 种具有明确用途的工程 TNT，以及萤石照明箭。",
   "authors": ["Codex"],
   "license": "MIT",
   "environment": "*",

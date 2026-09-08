@@ -31,6 +31,20 @@ public final class MoreTntMod implements ModInitializer {
 			.updateInterval(10)
 			.build(ResourceKey.create(Registries.ENTITY_TYPE, id("primed_more_tnt")))
 	);
+	public static final EntityType<GlowstoneArrowEntity> GLOWSTONE_LIGHT_ARROW_ENTITY = Registry.register(
+		BuiltInRegistries.ENTITY_TYPE,
+		ResourceKey.create(Registries.ENTITY_TYPE, id("glowstone_light_arrow")),
+		EntityType.Builder.<GlowstoneArrowEntity>of(GlowstoneArrowEntity::new, MobCategory.MISC)
+			.sized(0.5F, 0.5F)
+			.clientTrackingRange(4)
+			.updateInterval(20)
+			.build(ResourceKey.create(Registries.ENTITY_TYPE, id("glowstone_light_arrow")))
+	);
+	public static final Item GLOWSTONE_LIGHT_ARROW = Registry.register(
+		BuiltInRegistries.ITEM,
+		ResourceKey.create(Registries.ITEM, id("glowstone_light_arrow")),
+		new GlowstoneArrowItem(new Item.Properties().setId(ResourceKey.create(Registries.ITEM, id("glowstone_light_arrow"))))
+	);
 	private static final List<Item> TNT_ITEMS = new ArrayList<>();
 
 	@Override
@@ -51,7 +65,10 @@ public final class MoreTntMod implements ModInitializer {
 		Registry.register(BuiltInRegistries.CREATIVE_MODE_TAB, tabKey, CreativeModeTab.builder(CreativeModeTab.Row.TOP, 0)
 			.title(Component.translatable("itemGroup.moretnt"))
 			.icon(() -> TNT_ITEMS.getFirst().getDefaultInstance())
-			.displayItems((parameters, output) -> TNT_ITEMS.forEach(output::accept))
+			.displayItems((parameters, output) -> {
+				TNT_ITEMS.forEach(output::accept);
+				output.accept(GLOWSTONE_LIGHT_ARROW);
+			})
 			.build());
 	}
 

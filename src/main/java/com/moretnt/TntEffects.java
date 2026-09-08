@@ -15,6 +15,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.TntBlock;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.level.material.Fluids;
 
 /** Server-side effects. Selective variants never touch containers or unbreakable blocks. */
@@ -38,7 +39,7 @@ final class TntEffects {
 			case LAVA -> fill(level, center, kind.radius(), Blocks.LAVA.defaultBlockState());
 			case FROST -> replaceWater(level, center, kind.radius());
 			case FIRE -> ignite(level, center, kind.radius());
-			case GLOW -> fill(level, center, kind.radius(), Blocks.GLOWSTONE.defaultBlockState());
+			case GLOW -> placeGlowstone(level, center);
 			case SPONGE -> drain(level, center, kind.radius());
 			case TUNNEL -> tunnel(level, center, true);
 			case SHAFT -> shaft(level, center);
@@ -117,12 +118,24 @@ final class TntEffects {
 		});
 	}
 
+	/** Places exactly one light source at the charge or arrow impact, without overwriting blocks. */
+	static void placeGlowstone(ServerLevel level, BlockPos center) {
+		for (BlockPos pos : new BlockPos[] {
+			center, center.above(), center.below(), center.north(), center.south(), center.west(), center.east()
+		}) {
+			if (level.getBlockState(pos).isAir()) {
+				level.setBlock(pos, Blocks.GLOWSTONE.defaultBlockState(), 3);
+				return;
+			}
+		}
+	}
+
 	private static void tunnel(ServerLevel level, BlockPos center, boolean northSouth) {
 		for (int forward = -12; forward <= 12; forward++) {
 			for (int side = -1; side <= 1; side++) {
 				for (int y = -1; y <= 1; y++) {
 					BlockPos pos = northSouth ? center.offset(side, y, forward) : center.offset(forward, y, side);
-					breakIfMineable(level, pos, true);
+					breakIfExcavatable(level, pos, true);
 				}
 			}
 		}
@@ -132,7 +145,7 @@ final class TntEffects {
 		for (int y = -12; y <= 12; y++) {
 			for (int x = -1; x <= 1; x++) {
 				for (int z = -1; z <= 1; z++) {
-					breakIfMineable(level, center.offset(x, y, z), true);
+					breakIfExcavatable(level, center.offset(x, y, z), true);
 				}
 			}
 		}
@@ -142,7 +155,7 @@ final class TntEffects {
 		for (int x = -12; x <= 12; x++) {
 			for (int z = -2; z <= 2; z++) {
 				for (int y = -3; y <= 1; y++) {
-					breakIfMineable(level, center.offset(x, y, z), true);
+					breakIfExcavatable(level, center.offset(x, y, z), true);
 				}
 			}
 		}
@@ -154,8 +167,9 @@ final class TntEffects {
 				if (x * x + z * z > radius * radius) {
 					continue;
 				}
-				for (int y = -1; y <= 1; y++) {
-					BlockPos pos = center.offset(x, y, z);
+				int surfaceY = level.getHeight(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, center.getX() + x, center.getZ() + z) - 1;
+				for (int y = surfaceY; y >= Math.max(level.getMinY(), surfaceY - 8); y--) {
+					BlockPos pos = new BlockPos(center.getX() + x, y, center.getZ() + z);
 					BlockState state = level.getBlockState(pos);
 					if (matches(TntKind.SOIL, state) && canBreak(level, pos, state)) {
 						level.destroyBlock(pos, true, null, 512);
@@ -173,9 +187,14 @@ final class TntEffects {
 		});
 	}
 
-	private static void breakIfMineable(ServerLevel level, BlockPos pos, boolean drops) {
+	/**
+	 * Utility excavators deliberately use a broad terrain predicate. The former rock/ore-only
+	 * predicate caused shafts, tunnels, and trenches to stop at dirt, sand, clay, and modded soil.
+	 * Containers and unbreakable blocks still go through {@link #canBreak} and remain protected.
+	 */
+	private static void breakIfExcavatable(ServerLevel level, BlockPos pos, boolean drops) {
 		BlockState state = level.getBlockState(pos);
-		if (isMineableRockOrOre(state) && canBreak(level, pos, state)) {
+		if (canBreak(level, pos, state)) {
 			level.destroyBlock(pos, drops, null, 512);
 		}
 	}
@@ -200,7 +219,10 @@ final class TntEffects {
 		Block block = state.getBlock();
 		return switch (kind) {
 			case LUMBER -> state.is(BlockTags.LOGS) || state.is(BlockTags.LEAVES) || block == Blocks.BAMBOO || block == Blocks.BAMBOO_BLOCK;
-			case SOIL -> state.is(BlockTags.DIRT) || state.is(BlockTags.MUD) || state.is(BlockTags.SAND) || block == Blocks.GRAVEL || block == Blocks.CLAY || block == Blocks.SOUL_SAND || block == Blocks.SOUL_SOIL;
+			case SOIL -> state.is(BlockTags.DIRT) || state.is(BlockTags.MUD) || state.is(BlockTags.SAND)
+				|| block == Blocks.GRASS_BLOCK || block == Blocks.PODZOL || block == Blocks.MYCELIUM || block == Blocks.ROOTED_DIRT
+				|| block == Blocks.COARSE_DIRT || block == Blocks.DIRT_PATH || block == Blocks.GRAVEL || block == Blocks.CLAY
+				|| block == Blocks.SOUL_SAND || block == Blocks.SOUL_SOIL;
 			case STONE -> state.is(BlockTags.BASE_STONE_OVERWORLD) || block == Blocks.COBBLESTONE || block == Blocks.COBBLED_DEEPSLATE || block == Blocks.TUFF || block == Blocks.CALCITE;
 			case ORE_MINER -> isOre(state);
 			case ORE_SAFE -> !isOre(state);
