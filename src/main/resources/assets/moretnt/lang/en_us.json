@@ -91,7 +91,7 @@
   "item.moretnt.bedrock_tnt": "Bedrock Dissolver Charge",
   "item.moretnt.void_tnt": "Void Cleanser Charge",
   "item.moretnt.glowstone_light_arrow": "Glowstone Light Arrow",
-  "tooltip.moretnt.glowstone_light_arrow": "Creates one glowstone on its first block impact.",
+  "tooltip.moretnt.glowstone_light_arrow": "Creates one glowstone on block impact; makes hit creatures glow for 10 seconds.",
   "block.moretnt.nuclear_tnt": "Nuclear Charge",
   "tooltip.moretnt.nuclear_tnt": "Nuclear: devastating radius-64 explosion. Use only in a backed-up open test area.",
   "item.moretnt.nuclear_tnt": "Nuclear Charge",

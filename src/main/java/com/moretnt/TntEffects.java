@@ -119,12 +119,13 @@ final class TntEffects {
 		});
 	}
 
-	/** Places exactly one light source at the charge or arrow impact, without overwriting blocks. */
+	/** Places exactly one light source at the charge or arrow impact, replacing only air or water. */
 	static void placeGlowstone(ServerLevel level, BlockPos center) {
 		for (BlockPos pos : new BlockPos[] {
 			center, center.above(), center.below(), center.north(), center.south(), center.west(), center.east()
 		}) {
-			if (level.getBlockState(pos).isAir()) {
+			BlockState state = level.getBlockState(pos);
+			if (state.isAir() || state.getFluidState().is(Fluids.WATER)) {
 				level.setBlock(pos, Blocks.GLOWSTONE.defaultBlockState(), 3);
 				return;
 			}

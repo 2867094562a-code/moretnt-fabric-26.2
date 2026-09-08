@@ -91,7 +91,7 @@
   "item.moretnt.bedrock_tnt": "基岩消解弹",
   "item.moretnt.void_tnt": "无痕清除弹",
   "item.moretnt.glowstone_light_arrow": "萤石照明箭",
-  "tooltip.moretnt.glowstone_light_arrow": "命中方块后生成 1 个萤石照明。",
+  "tooltip.moretnt.glowstone_light_arrow": "命中方块后生成 1 个萤石；命中生物会发光 10 秒。",
   "block.moretnt.nuclear_tnt": "核爆弹",
   "tooltip.moretnt.nuclear_tnt": "核爆：半径 64 的毁灭性爆炸；仅限备份后的空旷测试区。",
   "item.moretnt.nuclear_tnt": "核爆弹",

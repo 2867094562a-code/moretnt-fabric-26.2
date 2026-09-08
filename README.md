@@ -11,7 +11,7 @@ More TNT is a Fabric mod for Minecraft 26.2 that adds 32 purpose-built TNT varia
 - Fabric API `0.157.0+26.2` or compatible newer build
 - Java `25`
 
-Place `moretnt-1.3.3+26.2.jar` in the instance's `mods` directory beside Fabric API, then start the game. In Creative mode, all variants and the Glowstone Light Arrow appear under the **More TNT** tab. In Survival, every variant is crafted in a normal crafting grid.
+Place `moretnt-1.3.4+26.2.jar` in the instance's `mods` directory beside Fabric API, then start the game. In Creative mode, all variants and the Glowstone Light Arrow appear under the **More TNT** tab. In Survival, every variant is crafted in a normal crafting grid.
 
 ## How it works
 
@@ -20,7 +20,7 @@ Place `moretnt-1.3.3+26.2.jar` in the instance's `mods` directory beside Fabric 
 - Ignition replaces the block with a real primed-TNT entity: a four-second (80-tick) fuse with vanilla gravity, bouncing, smoke, swelling, and flash animation.
 - Vanilla TNT ignition routes are supported: redstone power, flint and steel, fire charges, dispenser use of those ignition items, burning projectiles, nearby fire, nearby lava, and explosion chain reactions. More TNT and vanilla TNT within a utility effect radius are also physically primed with a randomized short fuse, so selective/environment effects do not break chain reactions. Command-placed `unstable=true` variants use the vanilla unstable-break trigger.
 - **Glow TNT** is the exception to ordinary hand placement: right-click throws a physical, 30-tick primed TNT charge. It follows normal TNT gravity and collision, then places exactly one glowstone at the detonation point. A command-placed Glow TNT block can still use every ordinary ignition route above.
-- **Glowstone Light Arrows** fly as normal arrows from bows, crossbows, and dispensers. Their first block impact places one glowstone on the struck face and consumes the arrow.
+- **Glowstone Light Arrows** fly as normal arrows from bows, crossbows, and dispensers, including underwater. A block impact places one glowstone (replacing water when necessary) and releases a light-particle burst; a creature impact applies the vanilla Glowing effect for 10 seconds and releases the same particles.
 - Selective TNT protects blocks with block entities, such as chests and machines. The ore-protection variants also recognize most modded ores whose registry path follows common patterns such as `*_ore`.
 - The `doTNTExplodes` gamerule is respected. When it is disabled, More TNT cannot arm or chain-react.
 - Targeted mining TNT drops normally harvested blocks. **Void TNT** deliberately destroys targets without drops. Bedrock TNT removes bedrock without dropping bedrock.
@@ -49,7 +49,7 @@ Every recipe is shapeless: combine one vanilla TNT with the listed material in a
 | Frost TNT | Blue Ice | Converts nearby water sources to ice. |
 | Fire TNT | Fire Charge | Ignites safe nearby air spaces. |
 | Glow TNT | Glowstone | Right-click throws a physical charge; its detonation places exactly one glowstone. |
-| Glowstone Light Arrow | One Glow TNT + one Arrow | Shapeless recipe yields **10** arrows; a block impact places one glowstone. |
+| Glowstone Light Arrow | One Glow TNT + one Arrow | Shapeless recipe yields **10** arrows; block hits create glowstone even underwater, while creature hits apply 10 seconds of Glowing. |
 | Sponge TNT | Sponge | Drains nearby water and lava. |
 | Tunnel TNT | Rail | Excavates all breakable, non-container terrain into a 3 × 3 north-south tunnel. |
 | Shaft TNT | Scaffolding | Excavates all breakable, non-container terrain into a 3 × 3 vertical shaft. |
