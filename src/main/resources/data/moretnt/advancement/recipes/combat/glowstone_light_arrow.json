@@ -1,0 +1,30 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_glow_tnt": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "moretnt:glow_tnt"
+          }
+        ]
+      }
+    },
+    "has_arrow": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:arrow"
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "recipes": [
+      "moretnt:glowstone_light_arrow"
+    ]
+  }
+}

@@ -11,7 +11,7 @@ More TNT is a Fabric mod for Minecraft 26.2 that adds 32 purpose-built TNT varia
 - Fabric API `0.157.0+26.2` or compatible newer build
 - Java `25`
 
-Place `moretnt-1.3.4+26.2.jar` in the instance's `mods` directory beside Fabric API, then start the game. In Creative mode, all variants and the Glowstone Light Arrow appear under the **More TNT** tab. In Survival, every variant is crafted in a normal crafting grid.
+Place `moretnt-1.3.5+26.2.jar` in the instance's `mods` directory beside Fabric API, then start the game. In Creative mode, all variants and the Glowstone Light Arrow appear under the **More TNT** tab. In Survival, every variant is crafted in a normal crafting grid.
 
 ## How it works
 
@@ -49,7 +49,7 @@ Every recipe is shapeless: combine one vanilla TNT with the listed material in a
 | Frost TNT | Blue Ice | Converts nearby water sources to ice. |
 | Fire TNT | Fire Charge | Ignites safe nearby air spaces. |
 | Glow TNT | Glowstone | Right-click throws a physical charge; its detonation places exactly one glowstone. |
-| Glowstone Light Arrow | One Glow TNT + one Arrow | Shapeless recipe yields **10** arrows; block hits create glowstone even underwater, while creature hits apply 10 seconds of Glowing. |
+| Glowstone Light Arrow | One Glow TNT + one Arrow | Shapeless recipe yields **10** arrows; unlocks in the recipe book after obtaining both inputs. Block hits create glowstone even underwater, while creature hits apply 10 seconds of Glowing. |
 | Sponge TNT | Sponge | Drains nearby water and lava. |
 | Tunnel TNT | Rail | Excavates all breakable, non-container terrain into a 3 × 3 north-south tunnel. |
 | Shaft TNT | Scaffolding | Excavates all breakable, non-container terrain into a 3 × 3 vertical shaft. |
@@ -72,6 +72,10 @@ Every recipe is shapeless: combine one vanilla TNT with the listed material in a
 3. Water, lava, fire, glowstone, frost, and sponge variants alter the environment instead of performing ordinary block explosions. Glow TNT is a thrown charge, and each Glowstone Light Arrow leaves one permanent glowstone block when it strikes a block. Keep these effects away from farms, redstone, and wooden builds unless that is intentional.
 4. Tunnel TNT runs north-south and Trench TNT runs east-west; use them in the intended orientation.
 5. Container protection applies to block entities. Do not treat it as a substitute for a backup when using the high-power variants.
+
+## Exploration loot
+
+Glowstone Light Arrows can also generate naturally in vanilla loot chests: dungeons (45%), abandoned mineshafts (35%), stronghold corridors (35%), shipwreck supply chests (30%), large underwater ruins (30%), fletcher houses (20%), and buried treasure (20%). Each successful roll gives a small stack of 4–24 arrows, depending on the chest type.
 
 ## Visual asset source
 

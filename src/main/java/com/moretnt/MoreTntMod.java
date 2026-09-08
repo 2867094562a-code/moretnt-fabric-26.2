@@ -49,6 +49,7 @@ public final class MoreTntMod implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
+		MoreTntLoot.register();
 		for (TntKind kind : TntKind.values()) {
 			Identifier id = id(kind.id());
 			ResourceKey<Block> blockKey = ResourceKey.create(Registries.BLOCK, id);
