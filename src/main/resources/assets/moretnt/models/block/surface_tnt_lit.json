@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "bottom": "moretnt:block/surface_tnt_bottom",
+    "side": "moretnt:block/surface_tnt_side_lit",
+    "top": "moretnt:block/surface_tnt_top_lit"
+  }
+}

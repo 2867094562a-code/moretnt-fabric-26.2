@@ -16,7 +16,9 @@ Place `moretnt-1.0.0+26.2.jar` in the instance's `mods` directory beside Fabric 
 ## How it works
 
 - Ignite any variant with flint and steel, a fire charge, or a redstone signal.
+- Each variant has its own original 16×16 side, top, and bottom texture, plus a brighter lit texture. During the fuse the block alternates between its normal and lit material while emitting smoke and flame particles.
 - The block stays in place and has a four-second fuse (80 ticks). It is deliberately stationary so the target area remains predictable.
+- Vanilla TNT ignition routes are supported: redstone power, flint and steel, fire charges, dispenser use of those ignition items, burning projectiles, nearby fire, nearby lava, and explosion chain reactions. Command-placed `unstable=true` variants also use the vanilla unstable-break trigger.
 - Selective TNT protects blocks with block entities, such as chests and machines. The ore-protection variants also recognize most modded ores whose registry path follows common patterns such as `*_ore`.
 - The `doTNTExplodes` gamerule is respected. When it is disabled, More TNT cannot arm or chain-react.
 - Targeted mining TNT drops normally harvested blocks. **Void TNT** deliberately destroys targets without drops. Bedrock TNT removes bedrock without dropping bedrock.
@@ -65,6 +67,10 @@ Every recipe is shapeless: combine one vanilla TNT with the listed material in a
 3. Water, lava, fire, glowstone, frost, and sponge variants alter the environment instead of performing ordinary block explosions. Keep them away from farms, redstone, and wooden builds unless that is intentional.
 4. Tunnel TNT runs north-south and Trench TNT runs east-west; use them in the intended orientation.
 5. Container protection applies to block entities. Do not treat it as a substitute for a backup when using the high-power variants.
+
+## Visual asset source
+
+The `docs/texture-concept-reference.png` sheet was generated as a visual direction reference. The game textures themselves are original, code-generated 16×16 PNG pixel art under `src/main/resources/assets/moretnt/textures/block/`; the reproducible generator is `tools/GenerateTntTextures.java`.
 
 ## Development
 

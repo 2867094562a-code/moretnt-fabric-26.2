@@ -1,6 +1,13 @@
 {
   "variants": {
-    "lit=false": { "model": "moretnt:block/utility_tnt" },
-    "lit=true": { "model": "moretnt:block/utility_tnt" }
+    "lit=false": {
+      "model": "moretnt:block/soil_tnt"
+    },
+    "lit=true,flash=false": {
+      "model": "moretnt:block/soil_tnt"
+    },
+    "lit=true,flash=true": {
+      "model": "moretnt:block/soil_tnt_lit"
+    }
   }
 }

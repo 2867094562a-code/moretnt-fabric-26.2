@@ -29,7 +29,7 @@ public final class MoreTntMod implements ModInitializer {
 			Block block = Registry.register(
 				BuiltInRegistries.BLOCK,
 				blockKey,
-				new UtilityTntBlock(kind, BlockBehaviour.Properties.ofFullCopy(Blocks.TNT).setId(blockKey))
+				new UtilityTntBlock(kind, BlockBehaviour.Properties.ofFullCopy(Blocks.TNT).setId(blockKey).ignitedByLava())
 			);
 			ResourceKey<Item> itemKey = ResourceKey.create(Registries.ITEM, id);
 			TNT_ITEMS.add(Registry.register(BuiltInRegistries.ITEM, itemKey, new MoreTntItem(block, new Item.Properties().setId(itemKey), kind)));

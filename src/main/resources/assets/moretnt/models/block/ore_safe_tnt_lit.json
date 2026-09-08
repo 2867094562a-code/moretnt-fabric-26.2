@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "bottom": "moretnt:block/ore_safe_tnt_bottom",
+    "side": "moretnt:block/ore_safe_tnt_side_lit",
+    "top": "moretnt:block/ore_safe_tnt_top_lit"
+  }
+}
