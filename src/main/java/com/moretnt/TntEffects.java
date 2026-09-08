@@ -40,7 +40,10 @@ final class TntEffects {
 			case LAVA -> fill(level, center, kind.radius(), Blocks.LAVA.defaultBlockState());
 			case FROST -> replaceWater(level, center, kind.radius());
 			case FIRE -> ignite(level, center, kind.radius());
-			case GLOW -> placeGlowstone(level, center);
+			case GLOW -> {
+				entityOnlyExplosion(level, center, 3.0F);
+				placeGlowstone(level, center);
+			}
 			case SPONGE -> drain(level, center, kind.radius());
 			case TUNNEL -> tunnel(level, center, true);
 			case SHAFT -> shaft(level, center);
@@ -76,6 +79,15 @@ final class TntEffects {
 
 	private static void boomSound(ServerLevel level, BlockPos pos) {
 		level.playSound(null, pos.getX() + 0.5D, pos.getY() + 0.5D, pos.getZ() + 0.5D, SoundEvents.GENERIC_EXPLODE, SoundSource.BLOCKS, 2.0F, 0.9F);
+	}
+
+	/**
+	 * Uses Minecraft's ordinary explosion damage and knockback calculation while the NONE
+	 * interaction keeps every block intact. This makes the light charge useful against mobs
+	 * without accidentally damaging builds or consuming the glowstone it creates.
+	 */
+	private static void entityOnlyExplosion(ServerLevel level, BlockPos center, float power) {
+		level.explode(null, center.getX() + 0.5D, center.getY() + 0.5D, center.getZ() + 0.5D, power, false, Level.ExplosionInteraction.NONE);
 	}
 
 	private static void selective(ServerLevel level, BlockPos center, int radius, Predicate<BlockState> target, boolean drops) {

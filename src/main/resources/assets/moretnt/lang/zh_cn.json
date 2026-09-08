@@ -35,7 +35,7 @@
   "block.moretnt.fire_tnt": "引燃扩散弹",
   "tooltip.moretnt.fire_tnt": "燃烧：在安全的空位点燃火焰。",
   "block.moretnt.glow_tnt": "萤石照明弹",
-  "tooltip.moretnt.glow_tnt": "照明：右键投掷；爆点只安放 1 个萤石。",
+  "tooltip.moretnt.glow_tnt": "照明：右键投掷；伤害实体但不破坏方块，并安放 1 个萤石。",
   "block.moretnt.sponge_tnt": "液体排空弹",
   "tooltip.moretnt.sponge_tnt": "排水：清除附近的水和岩浆。",
   "block.moretnt.tunnel_tnt": "隧道开凿弹",

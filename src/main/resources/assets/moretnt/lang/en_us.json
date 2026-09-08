@@ -35,7 +35,7 @@
   "block.moretnt.fire_tnt": "Firestarter Charge",
   "tooltip.moretnt.fire_tnt": "Ignites safe nearby air spaces.",
   "block.moretnt.glow_tnt": "Glowstone Light Charge",
-  "tooltip.moretnt.glow_tnt": "Right-click to throw; the detonation places exactly one glowstone.",
+  "tooltip.moretnt.glow_tnt": "Right-click to throw; damages entities without breaking blocks and places one glowstone.",
   "block.moretnt.sponge_tnt": "Drainage Charge",
   "tooltip.moretnt.sponge_tnt": "Drains nearby water and lava.",
   "block.moretnt.tunnel_tnt": "Tunnel Borer Charge",

@@ -19,7 +19,7 @@ public enum TntKind {
 	LAVA("lava_tnt", "灌岩浆 TNT", "在爆点周围的空气格灌入岩浆。", 2),
 	FROST("frost_tnt", "冻结 TNT", "把附近的水源冻结成冰。", 5),
 	FIRE("fire_tnt", "燃烧 TNT", "在安全的空位点燃火焰。", 4),
-	GLOW("glow_tnt", "萤石照明弹", "右键投掷；爆点只安放 1 个萤石。", 4),
+	GLOW("glow_tnt", "萤石照明弹", "右键投掷；伤害附近实体但不破坏方块，并安放 1 个萤石。", 4),
 	SPONGE("sponge_tnt", "排水 TNT", "清除附近的水和岩浆。", 5),
 	TUNNEL("tunnel_tnt", "隧道开凿弹", "清除可破坏地形，开凿南北向的 3×3 长隧道。", 12),
 	SHAFT("shaft_tnt", "竖井开凿弹", "清除可破坏地形，开凿 3×3 的垂直竖井。", 12),
