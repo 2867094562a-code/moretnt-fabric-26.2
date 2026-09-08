@@ -15,11 +15,12 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.TntBlock;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.level.material.Fluids;
 
 /** Server-side effects. Selective variants never touch containers or unbreakable blocks. */
 final class TntEffects {
+	/** Vanilla TNT cannot break blocks at this resistance or above (obsidian and other blast-proof blocks). */
+	private static final float VANILLA_TNT_IMMUNE_RESISTANCE = 1_200.0F;
 	private static final Set<Block> VANILLA_ORES = Set.of(
 		Blocks.COAL_ORE, Blocks.DEEPSLATE_COAL_ORE, Blocks.IRON_ORE, Blocks.DEEPSLATE_IRON_ORE,
 		Blocks.COPPER_ORE, Blocks.DEEPSLATE_COPPER_ORE, Blocks.GOLD_ORE, Blocks.DEEPSLATE_GOLD_ORE,
@@ -167,11 +168,16 @@ final class TntEffects {
 				if (x * x + z * z > radius * radius) {
 					continue;
 				}
-				int surfaceY = level.getHeight(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, center.getX() + x, center.getZ() + z) - 1;
-				for (int y = surfaceY; y >= Math.max(level.getMinY(), surfaceY - 8); y--) {
+				// The primed TNT's actual block Y is the requested finished grade. Every ordinary
+				// block above it is cleared, turning cliffs, trees, and buildings into a flat plane.
+				for (int y = center.getY() + 1; y < level.getMaxY(); y++) {
 					BlockPos pos = new BlockPos(center.getX() + x, y, center.getZ() + z);
 					BlockState state = level.getBlockState(pos);
-					if (matches(TntKind.SOIL, state) && canBreak(level, pos, state)) {
+					if (state.getBlock() instanceof UtilityTntBlock moreTnt) {
+						moreTnt.primeFromChain(level, pos, state);
+					} else if (state.is(Blocks.TNT)) {
+						TntBlock.prime(level, pos);
+					} else if (canFlatten(level, pos, state)) {
 						level.destroyBlock(pos, true, null, 512);
 					}
 				}
@@ -213,6 +219,17 @@ final class TntEffects {
 
 	private static boolean canBreak(ServerLevel level, BlockPos pos, BlockState state) {
 		return !state.isAir() && state.getDestroySpeed(level, pos) >= 0.0F && level.getBlockEntity(pos) == null;
+	}
+
+	/**
+	 * Surface leveling intentionally follows TNT blast resistance rather than the selective-TNT
+	 * container safeguard: everything above the requested grade is removed except blocks a
+	 * vanilla TNT cannot destroy, such as obsidian, ender chests, ancient debris, and bedrock.
+	 */
+	private static boolean canFlatten(ServerLevel level, BlockPos pos, BlockState state) {
+		return !state.isAir()
+			&& state.getDestroySpeed(level, pos) >= 0.0F
+			&& state.getBlock().getExplosionResistance() < VANILLA_TNT_IMMUNE_RESISTANCE;
 	}
 
 	private static boolean matches(TntKind kind, BlockState state) {

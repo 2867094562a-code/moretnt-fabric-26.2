@@ -45,7 +45,7 @@
   "block.moretnt.quarry_tnt": "矿场采掘弹",
   "tooltip.moretnt.quarry_tnt": "采石场：挖掘石材与矿石；保留箱子等容器。",
   "block.moretnt.surface_tnt": "地表平整弹",
-  "tooltip.moretnt.surface_tnt": "平整：逐列识别实际地表并清除表层土方。",
+  "tooltip.moretnt.surface_tnt": "平整：清除范围内高于爆炸 Y 高度的普通方块，保留高爆炸抗性方块。",
   "block.moretnt.trench_tnt": "壕沟开凿弹",
   "tooltip.moretnt.trench_tnt": "壕沟：挖出一条东西向的宽壕沟。",
   "block.moretnt.demolition_tnt": "安全拆除弹",

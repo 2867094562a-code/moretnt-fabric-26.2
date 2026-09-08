@@ -45,7 +45,7 @@
   "block.moretnt.quarry_tnt": "Quarry Charge",
   "tooltip.moretnt.quarry_tnt": "Mines stone and ores while preserving containers.",
   "block.moretnt.surface_tnt": "Surface Grader Charge",
-  "tooltip.moretnt.surface_tnt": "Finds each column's real surface and clears its topsoil.",
+  "tooltip.moretnt.surface_tnt": "Clears ordinary blocks above the detonation Y-level; blast-proof blocks remain.",
   "block.moretnt.trench_tnt": "Trench Borer Charge",
   "tooltip.moretnt.trench_tnt": "Digs a broad east-west trench.",
   "block.moretnt.demolition_tnt": "Safe Demolition Charge",
