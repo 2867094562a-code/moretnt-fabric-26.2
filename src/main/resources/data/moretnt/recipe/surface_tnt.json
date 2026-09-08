@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "redstone",
+  "group": "moretnt",
+  "ingredients": [
+    "minecraft:tnt",
+    "minecraft:grass_block"
+  ],
+  "result": {
+    "id": "moretnt:surface_tnt"
+  }
+}

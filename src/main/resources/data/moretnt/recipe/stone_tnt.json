@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "redstone",
+  "group": "moretnt",
+  "ingredients": [
+    "minecraft:tnt",
+    "minecraft:diamond_pickaxe"
+  ],
+  "result": {
+    "id": "moretnt:stone_tnt"
+  }
+}

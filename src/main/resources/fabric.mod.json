@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "id": "moretnt",
+  "version": "${version}",
+  "name": "更多 TNT",
+  "description": "加入 30 种具有明确用途的工程 TNT。",
+  "authors": ["Codex"],
+  "license": "MIT",
+  "environment": "*",
+  "entrypoints": {
+    "main": ["com.moretnt.MoreTntMod"]
+  },
+  "depends": {
+    "fabricloader": ">=0.19.3",
+    "minecraft": "~26.2",
+    "java": ">=25",
+    "fabric-api": "*"
+  }
+}

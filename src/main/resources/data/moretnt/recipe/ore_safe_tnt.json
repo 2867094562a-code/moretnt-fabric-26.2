@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "redstone",
+  "group": "moretnt",
+  "ingredients": [
+    "minecraft:tnt",
+    "minecraft:golden_apple"
+  ],
+  "result": {
+    "id": "moretnt:ore_safe_tnt"
+  }
+}

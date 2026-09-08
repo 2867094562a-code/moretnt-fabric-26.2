@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "redstone",
+  "group": "moretnt",
+  "ingredients": [
+    "minecraft:tnt",
+    "minecraft:blue_ice"
+  ],
+  "result": {
+    "id": "moretnt:frost_tnt"
+  }
+}

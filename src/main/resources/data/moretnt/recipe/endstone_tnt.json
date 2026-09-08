@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "redstone",
+  "group": "moretnt",
+  "ingredients": [
+    "minecraft:tnt",
+    "minecraft:end_stone"
+  ],
+  "result": {
+    "id": "moretnt:endstone_tnt"
+  }
+}

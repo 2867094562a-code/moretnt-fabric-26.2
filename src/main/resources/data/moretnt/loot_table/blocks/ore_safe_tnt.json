@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "rolls": 1,
+      "conditions": [
+        {
+          "condition": "minecraft:survives_explosion"
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "moretnt:ore_safe_tnt"
+        }
+      ]
+    }
+  ],
+  "random_sequence": "moretnt:blocks/ore_safe_tnt"
+}

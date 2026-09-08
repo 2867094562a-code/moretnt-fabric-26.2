@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "redstone",
+  "group": "moretnt",
+  "ingredients": [
+    "minecraft:tnt",
+    "minecraft:lava_bucket"
+  ],
+  "result": {
+    "id": "moretnt:lava_tnt"
+  }
+}

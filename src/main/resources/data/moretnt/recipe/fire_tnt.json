@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "redstone",
+  "group": "moretnt",
+  "ingredients": [
+    "minecraft:tnt",
+    "minecraft:fire_charge"
+  ],
+  "result": {
+    "id": "moretnt:fire_tnt"
+  }
+}

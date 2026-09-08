@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "redstone",
+  "group": "moretnt",
+  "ingredients": [
+    "minecraft:tnt",
+    "minecraft:diamond_shovel"
+  ],
+  "result": {
+    "id": "moretnt:soil_tnt"
+  }
+}

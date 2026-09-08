@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "redstone",
+  "group": "moretnt",
+  "ingredients": [
+    "minecraft:tnt",
+    "minecraft:dragon_egg"
+  ],
+  "result": {
+    "id": "moretnt:colossal_tnt"
+  }
+}

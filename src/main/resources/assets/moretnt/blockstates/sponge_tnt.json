@@ -1,0 +1,6 @@
+{
+  "variants": {
+    "lit=false": { "model": "moretnt:block/utility_tnt" },
+    "lit=true": { "model": "moretnt:block/utility_tnt" }
+  }
+}

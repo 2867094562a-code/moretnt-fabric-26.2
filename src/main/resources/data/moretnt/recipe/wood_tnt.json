@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "redstone",
+  "group": "moretnt",
+  "ingredients": [
+    "minecraft:tnt",
+    "minecraft:oak_log"
+  ],
+  "result": {
+    "id": "moretnt:wood_tnt"
+  }
+}
