@@ -11,7 +11,7 @@ More TNT is a Fabric mod for Minecraft 26.2 that adds 32 purpose-built TNT varia
 - Fabric API `0.157.0+26.2` or compatible newer build
 - Java `25`
 
-Place `moretnt-1.3.0+26.2.jar` in the instance's `mods` directory beside Fabric API, then start the game. In Creative mode, all variants and the Glowstone Light Arrow appear under the **More TNT** tab. In Survival, every variant is crafted in a normal crafting grid.
+Place `moretnt-1.3.1+26.2.jar` in the instance's `mods` directory beside Fabric API, then start the game. In Creative mode, all variants and the Glowstone Light Arrow appear under the **More TNT** tab. In Survival, every variant is crafted in a normal crafting grid.
 
 ## How it works
 
