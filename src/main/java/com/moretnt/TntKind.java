@@ -28,7 +28,9 @@ public enum TntKind {
 	TRENCH("trench_tnt", "壕沟 TNT", "挖出一条东西向的宽壕沟。", 12),
 	DEMOLITION("demolition_tnt", "拆除 TNT", "通用拆除，但会保护矿石和带容器的方块。", 6),
 	MEGA("mega_tnt", "巨爆 TNT", "半径 16 的大型常规爆炸，请远离建筑。", 16),
-	COLOSSAL("colossal_tnt", "超巨爆 TNT", "半径 32 的超大爆炸，仅建议在空旷区使用。", 32),
+	COLOSSAL("colossal_tnt", "超巨爆 TNT", "半径 48 的超大爆炸，仅建议在空旷区使用。", 48),
+	NUCLEAR("nuclear_tnt", "核爆 TNT", "半径 64 的毁灭性爆炸；仅限备份后的空旷测试区。", 64),
+	SUPER_NUCLEAR("super_nuclear_tnt", "超级核爆 TNT", "半径 96 的极端爆炸；会严重改变地形并可能造成卡顿。", 96),
 	OBSIDIAN("obsidian_tnt", "黑曜石 TNT", "专门拆除黑曜石、哭泣的黑曜石和重生锚。", 5),
 	BEDROCK("bedrock_tnt", "基岩 TNT", "破坏半径 4 内的基岩；不会掉落基岩。", 4),
 	VOID("void_tnt", "清空 TNT", "清除方块且不掉落物品，保留矿石与容器。", 7);

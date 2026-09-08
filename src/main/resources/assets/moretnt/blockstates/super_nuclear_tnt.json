@@ -1,0 +1,6 @@
+{
+  "variants": {
+    "unstable=false": { "model": "moretnt:block/super_nuclear_tnt" },
+    "unstable=true": { "model": "moretnt:block/super_nuclear_tnt" }
+  }
+}

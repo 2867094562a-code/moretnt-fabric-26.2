@@ -45,7 +45,9 @@ final class TntEffects {
 			case TRENCH -> trench(level, center);
 			case SURFACE -> surface(level, center, kind.radius());
 			case MEGA -> level.explode(null, center.getX() + 0.5D, center.getY() + 0.5D, center.getZ() + 0.5D, 16.0F, false, Level.ExplosionInteraction.TNT);
-			case COLOSSAL -> level.explode(null, center.getX() + 0.5D, center.getY() + 0.5D, center.getZ() + 0.5D, 32.0F, false, Level.ExplosionInteraction.TNT);
+			case COLOSSAL -> level.explode(null, center.getX() + 0.5D, center.getY() + 0.5D, center.getZ() + 0.5D, 48.0F, false, Level.ExplosionInteraction.TNT);
+			case NUCLEAR -> level.explode(null, center.getX() + 0.5D, center.getY() + 0.5D, center.getZ() + 0.5D, 64.0F, false, Level.ExplosionInteraction.TNT);
+			case SUPER_NUCLEAR -> level.explode(null, center.getX() + 0.5D, center.getY() + 0.5D, center.getZ() + 0.5D, 96.0F, false, Level.ExplosionInteraction.TNT);
 			case BEDROCK -> breakBedrock(level, center, kind.radius());
 			case VOID -> selective(level, center, kind.radius(), state -> !isOre(state), false);
 			case QUARRY -> selective(level, center, kind.radius(), TntEffects::isMineableRockOrOre, true);

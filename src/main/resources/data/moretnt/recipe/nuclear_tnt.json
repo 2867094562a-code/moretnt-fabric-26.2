@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "pattern": [
+    "ABA",
+    "CDC",
+    "AEA"
+  ],
+  "key": {
+    "A": "minecraft:netherite_block",
+    "B": "minecraft:nether_star",
+    "C": "minecraft:end_crystal",
+    "D": "moretnt:colossal_tnt",
+    "E": "minecraft:respawn_anchor"
+  },
+  "result": {
+    "id": "moretnt:nuclear_tnt"
+  }
+}

@@ -1,6 +1,6 @@
 {
   "model": {
     "type": "minecraft:model",
-    "model": "moretnt:block/utility_tnt"
+    "model": "moretnt:block/lava_tnt"
   }
 }

@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "pattern": [
+    "ABA",
+    "CDC",
+    "AEA"
+  ],
+  "key": {
+    "A": "moretnt:nuclear_tnt",
+    "B": "minecraft:nether_star",
+    "C": "minecraft:beacon",
+    "D": "moretnt:nuclear_tnt",
+    "E": "minecraft:dragon_egg"
+  },
+  "result": {
+    "id": "moretnt:super_nuclear_tnt"
+  }
+}

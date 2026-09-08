@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "rolls": 1,
+      "conditions": [
+        { "condition": "minecraft:survives_explosion" }
+      ],
+      "entries": [
+        { "type": "minecraft:item", "name": "moretnt:super_nuclear_tnt" }
+      ]
+    }
+  ],
+  "random_sequence": "moretnt:blocks/super_nuclear_tnt"
+}

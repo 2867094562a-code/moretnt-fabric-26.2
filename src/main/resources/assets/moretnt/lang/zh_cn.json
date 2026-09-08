@@ -89,5 +89,11 @@
   "item.moretnt.colossal_tnt": "超巨爆破弹",
   "item.moretnt.obsidian_tnt": "黑曜石破拆弹",
   "item.moretnt.bedrock_tnt": "基岩消解弹",
-  "item.moretnt.void_tnt": "无痕清除弹"
+  "item.moretnt.void_tnt": "无痕清除弹",
+  "block.moretnt.nuclear_tnt": "核爆弹",
+  "tooltip.moretnt.nuclear_tnt": "核爆：半径 64 的毁灭性爆炸；仅限备份后的空旷测试区。",
+  "item.moretnt.nuclear_tnt": "核爆弹",
+  "block.moretnt.super_nuclear_tnt": "超级核爆弹",
+  "tooltip.moretnt.super_nuclear_tnt": "超级核爆：半径 96 的极端爆炸；会严重改变地形并可能造成卡顿。",
+  "item.moretnt.super_nuclear_tnt": "超级核爆弹"
 }

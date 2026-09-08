@@ -89,5 +89,11 @@
   "item.moretnt.colossal_tnt": "Colossal Charge",
   "item.moretnt.obsidian_tnt": "Obsidian Breaker Charge",
   "item.moretnt.bedrock_tnt": "Bedrock Dissolver Charge",
-  "item.moretnt.void_tnt": "Void Cleanser Charge"
+  "item.moretnt.void_tnt": "Void Cleanser Charge",
+  "block.moretnt.nuclear_tnt": "Nuclear Charge",
+  "tooltip.moretnt.nuclear_tnt": "Nuclear: devastating radius-64 explosion. Use only in a backed-up open test area.",
+  "item.moretnt.nuclear_tnt": "Nuclear Charge",
+  "block.moretnt.super_nuclear_tnt": "Super-Nuclear Charge",
+  "tooltip.moretnt.super_nuclear_tnt": "Super-nuclear: extreme radius-96 explosion. Permanently reshapes terrain and can cause lag.",
+  "item.moretnt.super_nuclear_tnt": "Super-Nuclear Charge"
 }
