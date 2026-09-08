@@ -11,14 +11,14 @@ More TNT is a Fabric mod for Minecraft 26.2 that adds 30 purpose-built TNT varia
 - Fabric API `0.157.0+26.2` or compatible newer build
 - Java `25`
 
-Place `moretnt-1.0.0+26.2.jar` in the instance's `mods` directory beside Fabric API, then start the game. In Creative mode, all variants appear under the **More TNT** tab. In Survival, every variant is crafted in a normal crafting grid.
+Place `moretnt-1.1.0+26.2.jar` in the instance's `mods` directory beside Fabric API, then start the game. In Creative mode, all variants appear under the **More TNT** tab. In Survival, every variant is crafted in a normal crafting grid.
 
 ## How it works
 
 - Ignite any variant with flint and steel, a fire charge, or a redstone signal.
-- Each variant has its own original 16×16 side, top, and bottom texture, plus a brighter lit texture. During the fuse the block alternates between its normal and lit material while emitting smoke and flame particles.
-- The block stays in place and has a four-second fuse (80 ticks). It is deliberately stationary so the target area remains predictable.
-- Vanilla TNT ignition routes are supported: redstone power, flint and steel, fire charges, dispenser use of those ignition items, burning projectiles, nearby fire, nearby lava, and explosion chain reactions. Command-placed `unstable=true` variants also use the vanilla unstable-break trigger.
+- Every variant has original 32×32 side, top, and bottom textures. The side has a high-contrast purpose code (for example `STN`, `ORE`, `H2O`, or `BDR`) and the top has a matching pictogram; names are also localized for both the block and inventory item.
+- Ignition replaces the block with a real primed-TNT entity: a four-second (80-tick) fuse with vanilla gravity, bouncing, smoke, swelling, and flash animation.
+- Vanilla TNT ignition routes are supported: redstone power, flint and steel, fire charges, dispenser use of those ignition items, burning projectiles, nearby fire, nearby lava, and explosion chain reactions. More TNT and vanilla TNT within a utility effect radius are also physically primed with a randomized short fuse, so selective/environment effects do not break chain reactions. Command-placed `unstable=true` variants use the vanilla unstable-break trigger.
 - Selective TNT protects blocks with block entities, such as chests and machines. The ore-protection variants also recognize most modded ores whose registry path follows common patterns such as `*_ore`.
 - The `doTNTExplodes` gamerule is respected. When it is disabled, More TNT cannot arm or chain-react.
 - Targeted mining TNT drops normally harvested blocks. **Void TNT** deliberately destroys targets without drops. Bedrock TNT removes bedrock without dropping bedrock.
@@ -70,7 +70,7 @@ Every recipe is shapeless: combine one vanilla TNT with the listed material in a
 
 ## Visual asset source
 
-The `docs/texture-concept-reference.png` sheet was generated as a visual direction reference. The game textures themselves are original, code-generated 16×16 PNG pixel art under `src/main/resources/assets/moretnt/textures/block/`; the reproducible generator is `tools/GenerateTntTextures.java`.
+The `docs/texture-concept-reference.png` sheet was generated as a visual direction reference. The game textures themselves are original, code-generated 32×32 PNG pixel art under `src/main/resources/assets/moretnt/textures/block/`; the reproducible generator is `tools/GenerateTntTextures.java`.
 
 ## Development
 

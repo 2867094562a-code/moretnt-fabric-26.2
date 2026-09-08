@@ -1,13 +1,6 @@
 {
   "variants": {
-    "lit=false": {
-      "model": "moretnt:block/ore_miner_tnt"
-    },
-    "lit=true,flash=false": {
-      "model": "moretnt:block/ore_miner_tnt"
-    },
-    "lit=true,flash=true": {
-      "model": "moretnt:block/ore_miner_tnt_lit"
-    }
+    "unstable=false": { "model": "moretnt:block/ore_miner_tnt" },
+    "unstable=true": { "model": "moretnt:block/ore_miner_tnt" }
   }
 }

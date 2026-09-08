@@ -60,4 +60,14 @@ public enum TntKind {
 	public int radius() {
 		return radius;
 	}
+
+	/** Resolves persistent entity data without relying on enum ordinal order. */
+	public static TntKind byId(String id) {
+		for (TntKind kind : values()) {
+			if (kind.id.equals(id)) {
+				return kind;
+			}
+		}
+		return LUMBER;
+	}
 }

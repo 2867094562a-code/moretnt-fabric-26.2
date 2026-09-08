@@ -12,6 +12,8 @@ import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -19,6 +21,16 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 /** Registers the 30 More TNT blocks and their matching inventory items. */
 public final class MoreTntMod implements ModInitializer {
 	public static final String MOD_ID = "moretnt";
+	/** One primed entity type stores the selected TNT variant in its persistent data. */
+	public static final EntityType<MoreTntPrimedEntity> PRIMED_TNT = Registry.register(
+		BuiltInRegistries.ENTITY_TYPE,
+		ResourceKey.create(Registries.ENTITY_TYPE, id("primed_more_tnt")),
+		EntityType.Builder.of(MoreTntPrimedEntity::new, MobCategory.MISC)
+			.sized(0.98F, 0.98F)
+			.clientTrackingRange(10)
+			.updateInterval(10)
+			.build(ResourceKey.create(Registries.ENTITY_TYPE, id("primed_more_tnt")))
+	);
 	private static final List<Item> TNT_ITEMS = new ArrayList<>();
 
 	@Override

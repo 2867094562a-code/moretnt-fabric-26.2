@@ -8,7 +8,8 @@
   "license": "MIT",
   "environment": "*",
   "entrypoints": {
-    "main": ["com.moretnt.MoreTntMod"]
+    "main": ["com.moretnt.MoreTntMod"],
+    "client": ["com.moretnt.client.MoreTntClient"]
   },
   "depends": {
     "fabricloader": ">=0.19.3",

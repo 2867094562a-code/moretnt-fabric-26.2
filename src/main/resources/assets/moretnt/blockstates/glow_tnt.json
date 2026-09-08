@@ -1,13 +1,6 @@
 {
   "variants": {
-    "lit=false": {
-      "model": "moretnt:block/glow_tnt"
-    },
-    "lit=true,flash=false": {
-      "model": "moretnt:block/glow_tnt"
-    },
-    "lit=true,flash=true": {
-      "model": "moretnt:block/glow_tnt_lit"
-    }
+    "unstable=false": { "model": "moretnt:block/glow_tnt" },
+    "unstable=true": { "model": "moretnt:block/glow_tnt" }
   }
 }

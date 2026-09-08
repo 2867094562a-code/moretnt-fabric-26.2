@@ -13,6 +13,7 @@ import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.TntBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Fluids;
 
@@ -31,6 +32,7 @@ final class TntEffects {
 
 	static void detonate(ServerLevel level, BlockPos center, TntKind kind) {
 		boomSound(level, center);
+		primeNearbyTnt(level, center, Math.min(kind.radius(), 12));
 		switch (kind) {
 			case WATER -> fill(level, center, kind.radius(), Blocks.WATER.defaultBlockState());
 			case LAVA -> fill(level, center, kind.radius(), Blocks.LAVA.defaultBlockState());
@@ -50,6 +52,22 @@ final class TntEffects {
 			case DEMOLITION -> selective(level, center, kind.radius(), state -> !isOre(state), true);
 			default -> selective(level, center, kind.radius(), state -> matches(kind, state), true);
 		}
+	}
+
+	/**
+	 * Selective and environment effects do not use vanilla's block-damaging explosion path, so
+	 * they explicitly pass their blast on to nearby TNT. Each target becomes a physical primed
+	 * entity with a randomized short fuse, exactly like vanilla TNT chain reactions.
+	 */
+	private static void primeNearbyTnt(ServerLevel level, BlockPos center, int radius) {
+		forEachSphere(center, radius, pos -> {
+			BlockState state = level.getBlockState(pos);
+			if (state.getBlock() instanceof UtilityTntBlock moreTnt) {
+				moreTnt.primeFromChain(level, pos, state);
+			} else if (state.is(Blocks.TNT)) {
+				TntBlock.prime(level, pos);
+			}
+		});
 	}
 
 	private static void boomSound(ServerLevel level, BlockPos pos) {
