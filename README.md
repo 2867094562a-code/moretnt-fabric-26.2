@@ -11,7 +11,7 @@ More TNT is a Fabric mod for Minecraft 26.2 that adds 32 purpose-built TNT varia
 - Fabric API `0.157.0+26.2` or compatible newer build
 - Java `25`
 
-Place `moretnt-1.3.2+26.2.jar` in the instance's `mods` directory beside Fabric API, then start the game. In Creative mode, all variants and the Glowstone Light Arrow appear under the **More TNT** tab. In Survival, every variant is crafted in a normal crafting grid.
+Place `moretnt-1.3.3+26.2.jar` in the instance's `mods` directory beside Fabric API, then start the game. In Creative mode, all variants and the Glowstone Light Arrow appear under the **More TNT** tab. In Survival, every variant is crafted in a normal crafting grid.
 
 ## How it works
 
@@ -54,7 +54,7 @@ Every recipe is shapeless: combine one vanilla TNT with the listed material in a
 | Tunnel TNT | Rail | Excavates all breakable, non-container terrain into a 3 × 3 north-south tunnel. |
 | Shaft TNT | Scaffolding | Excavates all breakable, non-container terrain into a 3 × 3 vertical shaft. |
 | Quarry TNT | Diamond | Mines stone and ores while preserving containers. |
-| Leveling TNT | Grass Block | Clears ordinary blocks above the detonation Y-level across its horizontal radius; vanilla-TNT-proof blocks remain. |
+| Leveling TNT | Grass Block | Clears ordinary blocks from the detonation Y-level upward across its horizontal radius; vanilla-TNT-proof blocks remain. |
 | Trench TNT | Stone Bricks | Digs a broad east-west trench. |
 | Demolition TNT | Obsidian | General demolition that preserves ores and containers. |
 | Mega TNT | Nether Star | A conventional explosion with radius 16. |

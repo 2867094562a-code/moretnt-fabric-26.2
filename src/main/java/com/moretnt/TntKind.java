@@ -24,7 +24,7 @@ public enum TntKind {
 	TUNNEL("tunnel_tnt", "隧道开凿弹", "清除可破坏地形，开凿南北向的 3×3 长隧道。", 12),
 	SHAFT("shaft_tnt", "竖井开凿弹", "清除可破坏地形，开凿 3×3 的垂直竖井。", 12),
 	QUARRY("quarry_tnt", "采石场 TNT", "挖掘石材与矿石；保留箱子等容器。", 7),
-	SURFACE("surface_tnt", "地表平整弹", "清除范围内高于爆炸 Y 高度的普通方块，保留高爆炸抗性方块。", 8),
+	SURFACE("surface_tnt", "地表平整弹", "清除范围内从爆炸 Y 高度起的普通方块，保留高爆炸抗性方块。", 8),
 	TRENCH("trench_tnt", "壕沟 TNT", "挖出一条东西向的宽壕沟。", 12),
 	DEMOLITION("demolition_tnt", "拆除 TNT", "通用拆除，但会保护矿石和带容器的方块。", 6),
 	MEGA("mega_tnt", "巨爆 TNT", "半径 16 的大型常规爆炸，请远离建筑。", 16),

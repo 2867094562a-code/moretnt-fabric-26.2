@@ -168,9 +168,10 @@ final class TntEffects {
 				if (x * x + z * z > radius * radius) {
 					continue;
 				}
-				// The primed TNT's actual block Y is the requested finished grade. Every ordinary
-				// block above it is cleared, turning cliffs, trees, and buildings into a flat plane.
-				for (int y = center.getY() + 1; y < level.getMaxY(); y++) {
+				// The primed TNT's actual block Y is the first level to clear. Starting at this
+				// exact Y (rather than Y + 1) makes the neighboring block layer level with the
+				// placed TNT part of the flattened area as well.
+				for (int y = center.getY(); y < level.getMaxY(); y++) {
 					BlockPos pos = new BlockPos(center.getX() + x, y, center.getZ() + z);
 					BlockState state = level.getBlockState(pos);
 					if (state.getBlock() instanceof UtilityTntBlock moreTnt) {
