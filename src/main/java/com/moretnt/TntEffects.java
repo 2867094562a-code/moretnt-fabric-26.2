@@ -10,17 +10,20 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.TntBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Fluids;
+import net.minecraft.world.phys.AABB;
 
 /** Server-side effects. Selective variants never touch containers or unbreakable blocks. */
 final class TntEffects {
 	/** Vanilla TNT cannot break blocks at this resistance or above (obsidian and other blast-proof blocks). */
 	private static final float VANILLA_TNT_IMMUNE_RESISTANCE = 1_200.0F;
+	private static final float GLOW_ENTITY_BLAST_POWER = 3.0F;
 	private static final Set<Block> VANILLA_ORES = Set.of(
 		Blocks.COAL_ORE, Blocks.DEEPSLATE_COAL_ORE, Blocks.IRON_ORE, Blocks.DEEPSLATE_IRON_ORE,
 		Blocks.COPPER_ORE, Blocks.DEEPSLATE_COPPER_ORE, Blocks.GOLD_ORE, Blocks.DEEPSLATE_GOLD_ORE,
@@ -41,7 +44,9 @@ final class TntEffects {
 			case FROST -> replaceWater(level, center, kind.radius());
 			case FIRE -> ignite(level, center, kind.radius());
 			case GLOW -> {
-				entityOnlyExplosion(level, center, 3.0F);
+				if (hasLivingEntityInBlastRange(level, center, GLOW_ENTITY_BLAST_POWER)) {
+					entityOnlyExplosion(level, center, GLOW_ENTITY_BLAST_POWER);
+				}
 				placeGlowstone(level, center);
 			}
 			case SPONGE -> drain(level, center, kind.radius());
@@ -81,13 +86,25 @@ final class TntEffects {
 		level.playSound(null, pos.getX() + 0.5D, pos.getY() + 0.5D, pos.getZ() + 0.5D, SoundEvents.GENERIC_EXPLODE, SoundSource.BLOCKS, 2.0F, 0.9F);
 	}
 
-	/**
-	 * Uses Minecraft's ordinary explosion damage and knockback calculation while the NONE
-	 * interaction keeps every block intact. This makes the light charge useful against mobs
-	 * without accidentally damaging builds or consuming the glowstone it creates.
-	 */
+	/** Uses ordinary damage and knockback while the NONE interaction keeps every block intact. */
 	private static void entityOnlyExplosion(ServerLevel level, BlockPos center, float power) {
-		level.explode(null, center.getX() + 0.5D, center.getY() + 0.5D, center.getZ() + 0.5D, power, false, Level.ExplosionInteraction.NONE);
+		double x = center.getX() + 0.5D;
+		double y = center.getY() + 0.5D;
+		double z = center.getZ() + 0.5D;
+		level.explode(null, x, y, z, power, false, Level.ExplosionInteraction.NONE);
+	}
+
+	/**
+	 * A radius-three explosion can affect entities up to twice its power away. Avoiding the
+	 * explosion call entirely outside that area gives the light charge its quiet light-only mode.
+	 */
+	private static boolean hasLivingEntityInBlastRange(ServerLevel level, BlockPos center, float power) {
+		double radius = power * 2.0D;
+		double x = center.getX() + 0.5D;
+		double y = center.getY() + 0.5D;
+		double z = center.getZ() + 0.5D;
+		AABB area = new AABB(x - radius, y - radius, z - radius, x + radius, y + radius, z + radius);
+		return !level.getEntitiesOfClass(LivingEntity.class, area, entity -> entity.isAlive() && !entity.isSpectator()).isEmpty();
 	}
 
 	private static void selective(ServerLevel level, BlockPos center, int radius, Predicate<BlockState> target, boolean drops) {
